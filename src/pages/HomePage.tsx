@@ -30,7 +30,7 @@ export function HomePage({ router }: any) {
         <div style={{display:'grid', gridTemplateColumns:'1fr 1fr', gap:'12px'}}>
           
           {/* Stylish Name Card */}
-          <div onClick={() => navigate('/stylish-name')} style={{background:'linear-gradient(135deg,#8b5cf6,#ec4899)', padding:'16px', borderRadius:'18px', color:'#fff', cursor:'pointer', boxShadow:'0 8px 20px -8px rgba(139,92,246,0.6)'}}>
+          <div onClick={() => navigate('/stylish-names')} style={{background:'linear-gradient(135deg,#8b5cf6,#ec4899)', padding:'16px', borderRadius:'18px', color:'#fff', cursor:'pointer', boxShadow:'0 8px 20px -8px rgba(139,92,246,0.6)'}}>
             <div style={{width:'48px', height:'48px', background:'rgba(255,255,255,0.2)', borderRadius:'12px', display:'flex', alignItems:'center', justifyContent:'center', fontSize:'24px', backdropFilter:'blur(10px)'}}>𝕬</div>
             <div style={{marginTop:'10px'}}>
               <div style={{fontWeight:'800', fontSize:'14px'}}>Stylish Name</div>
@@ -40,7 +40,7 @@ export function HomePage({ router }: any) {
           </div>
 
           {/* Font Style Card */}
-          <div onClick={() => navigate('/fancy-text')} style={{background:'linear-gradient(135deg,#06b6d4,#3b82f6)', padding:'16px', borderRadius:'18px', color:'#fff', cursor:'pointer', boxShadow:'0 8px 20px -8px rgba(59,130,246,0.6)'}}>
+          <div onClick={() => navigate('/stylish-names')} style={{background:'linear-gradient(135deg,#06b6d4,#3b82f6)', padding:'16px', borderRadius:'18px', color:'#fff', cursor:'pointer', boxShadow:'0 8px 20px -8px rgba(59,130,246,0.6)'}}>
             <div style={{width:'48px', height:'48px', background:'rgba(255,255,255,0.2)', borderRadius:'12px', display:'flex', alignItems:'center', justifyContent:'center', fontSize:'24px'}}>Ⓕ</div>
             <div style={{marginTop:'10px'}}>
               <div style={{fontWeight:'800', fontSize:'14px'}}>Fancy Text</div>
