@@ -1,69 +1,44 @@
-import { useState } from 'react';
-
 export function HomePage({ router }: any) {
-  const [name, setName] = useState('');
-
   const tools = [
-    { title: 'Stylish Names', slug: '/stylish-names', icon: '🔥', desc: '25+ Fonts for Free Fire', color: 'from-orange-400 to-pink-500', badge: 'VIRAL' },
-    { title: 'Fancy Text', slug: '/fancy-text', icon: '✨', desc: 'For Instagram Bio', color: 'from-violet-500 to-purple-500', badge: 'NEW' },
-    { title: 'Love Shayari', slug: '/shayari', icon: '❤️', desc: '100+ Viral Shayari', color: 'from-red-400 to-rose-500', badge: 'TRENDING' },
-    { title: 'Festival Wishes', slug: '/festival-wishes', icon: '🎉', desc: 'Diwali, Holi, Eid', color: 'from-amber-400 to-orange-500', badge: 'HOT' },
+    { title: 'Stylish Names', desc: '🔥 1M+ Used • Copy Paste', color: '#f97316', icon: '🔥', path: '/stylish-names' },
+    { title: 'FF Nickname Generator', desc: '⚔️ For Free Fire, BGMI', color: '#ef4444', icon: '⚔️', path: '/nickname-generator' },
+    { title: 'Instagram VIP Bio', desc: '👑 Attitude Bio for Boys', color: '#ec4899', icon: '👑', path: '/insta-bio' },
+    { title: 'Fancy Text Generator', desc: '✨ 30+ Cool Fonts', color: '#8b5cf6', icon: '✨', path: '/fancy-text' },
+    { title: 'Festival Wishes', desc: '🪔 Diwali, Holi, Eid', color: '#eab308', icon: '🪔', path: '/festival-wishes' },
+    { title: 'Love Shayari', desc: '❤️ 500+ Shayari', color: '#f43f5e', icon: '❤️', path: '/shayari' },
   ];
 
-  const handleGenerate = () => {
-    if (!name.trim()) return;
-    router.navigate(`/stylish-names?q=${encodeURIComponent(name)}`);
-  };
-
   return (
-    <div className="min-h-screen bg-[#fcf8ff]">
-      {/* HERO */}
-      <div className="bg-gradient-to-br from-violet-600 via-fuchsia-500 to-orange-400 px-4 pt-8 pb-20 rounded-b-[40px] text-white text-center relative overflow-hidden">
-        <div className="absolute top-0 left-0 w-full h-full bg-[radial-gradient(circle_at_30%_20%,rgba(255,255,255,0.2),transparent)]"></div>
-        <h1 className="relative text-[32px] font-black leading-tight">
-          Stylish Name & <br/> Fancy Text Maker
-        </h1>
-        <p className="relative mt-2 text-[14px] opacity-90">For Instagram, Free Fire, BGMI & WhatsApp</p>
-
-        <div className="relative mt-6 bg-white rounded-[20px] p-2 flex gap-2 max-w-[420px] mx-auto shadow-xl">
-          <input
-            value={name}
-            onChange={(e)=>setName(e.target.value)}
-            placeholder="Enter your name..."
-            className="flex-1 px-4 py-3 rounded-[14px] text-gray-900 font-bold outline-none text-[16px]"
-          />
-          <button onClick={handleGenerate} className="bg-black text-white px-6 py-3 rounded-[14px] font-black text-[14px]">GENERATE</button>
-        </div>
-        <div className="relative mt-3 text-[11px] opacity-80">🔥 1,24,000+ Names Generated Today</div>
-      </div>
-
-      {/* TOOLS GRID */}
-      <div className="px-4 -mt-8 max-w-5xl mx-auto">
-        <div className="grid grid-cols-2 gap-3">
-          {tools.map((t)=>(
-            <button key={t.slug} onClick={()=>router.navigate(t.slug)} className="text-left bg-white rounded-[22px] p-4 border border-gray-100 shadow-sm hover:shadow-md transition-all relative overflow-hidden">
-              <div className={`absolute top-3 right-3 text-[9px] font-black px-2 py-1 rounded-full bg-gradient-to-r ${t.color} text-white`}>{t.badge}</div>
-              <div className="text-[28px]">{t.icon}</div>
-              <div className="mt-2 font-black text-[15px] text-gray-900">{t.title}</div>
-              <div className="text-[11px] text-gray-500 font-medium mt-0.5">{t.desc}</div>
-            </button>
-          ))}
-        </div>
-
-        {/* SEO / VIRAL TEXT */}
-        <div className="mt-8 bg-white rounded-[22px] p-5 border border-gray-100">
-          <h2 className="font-black text-[18px]">Why Wishes Hub India?</h2>
-          <p className="mt-2 text-[13px] text-gray-600 leading-[18px]">
-            India ka No.1 Stylish Font Generator. Yaha se tu apne naam ko 25+ stylish fonts me convert karke Instagram bio, Free Fire nickname, WhatsApp status aur BGMI name ke liye copy kar sakta hai. No login, 100% free.
-          </p>
-          <div className="mt-4 flex flex-wrap gap-2">
-            {['#stylishname', '#freefirefont', '#instagramfonts', '#fancytext', '#bgminame'].map(tag=>(
-              <span key={tag} className="text-[11px] bg-gray-100 px-3 py-1 rounded-full font-bold text-gray-600">{tag}</span>
-            ))}
+    <div style={{ minHeight: '100vh', background: '#f8f9fb', fontFamily: 'system-ui', padding: '0' }}>
+      <div style={{ maxWidth: '1200px', margin: '0 auto', padding: '20px 16px' }}>
+        <div style={{ background: 'linear-gradient(135deg,#0f172a,#1e293b)', borderRadius: '28px', padding: '28px 20px', color: '#fff', textAlign: 'center', marginBottom: '20px' }}>
+          <h1 style={{ fontSize: '32px', fontWeight: '900', lineHeight: '1.1', margin: 0 }}>Wishes Hub India 🇮🇳</h1>
+          <p style={{ fontSize: '14px', opacity: 0.8, marginTop: '8px' }}>India's No.1 Stylish Name & Bio Generator - 2M+ Users Trust Us</p>
+          <div style={{ display: 'flex', gap: '8px', justifyContent: 'center', marginTop: '16px', flexWrap: 'wrap' }}>
+            <span style={{ background: '#ffffff1a', padding: '6px 12px', borderRadius: '20px', fontSize: '12px', fontWeight: '700' }}>⚡ 100% Free</span>
+            <span style={{ background: '#ffffff1a', padding: '6px 12px', borderRadius: '20px', fontSize: '12px', fontWeight: '700' }}>🔥 No Login</span>
+            <span style={{ background: '#ffffff1a', padding: '6px 12px', borderRadius: '20px', fontSize: '12px', fontWeight: '700' }}>✅ Copy Paste</span>
           </div>
         </div>
 
-        <div className="mt-6 pb-10 text-center text-[11px] text-gray-400">Made in India 🇮🇳 | 2M+ Users Trusted</div>
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(160px, 1fr))', gap: '12px' }}>
+          {tools.map((t) => (
+            <div key={t.path} onClick={() => router.navigate(t.path)} style={{ background: '#fff', borderRadius: '20px', padding: '18px', cursor: 'pointer', border: '1px solid #f1f5f9', boxShadow: '0 4px 20px rgba(0,0,0,0.04)' }}>
+              <div style={{ width: '44px', height: '44px', borderRadius: '12px', background: `${t.color}15`, display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '22px' }}>{t.icon}</div>
+              <div style={{ fontSize: '15px', fontWeight: '800', marginTop: '12px', color: '#0f172a' }}>{t.title}</div>
+              <div style={{ fontSize: '12px', color: '#64748b', marginTop: '4px', fontWeight: '500' }}>{t.desc}</div>
+              <div style={{ marginTop: '12px', background: t.color, color: '#fff', padding: '8px', borderRadius: '10px', textAlign: 'center', fontSize: '12px', fontWeight: '800' }}>Generate Now →</div>
+            </div>
+          ))}
+        </div>
+
+        <div style={{ marginTop: '20px', background: '#fff', borderRadius: '20px', padding: '16px', border: '1px solid #f1f5f9', display: 'flex', gap: '12px', alignItems: 'center' }}>
+          <div style={{ fontSize: '28px' }}>🚀</div>
+          <div>
+            <div style={{ fontWeight: '800', fontSize: '14px' }}>2,34,891+ Names Generated Today</div>
+            <div style={{ fontSize: '12px', color: '#64748b' }}>Join India's biggest stylish names community</div>
+          </div>
+        </div>
       </div>
     </div>
   );
