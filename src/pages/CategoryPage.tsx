@@ -1,59 +1,121 @@
 import { useState } from 'react';
-import { categories } from '@/data/wishes';
+import { categories, getCategoryBySlug } from '@/data/wishes';
+import type { RouterHook } from '@/hooks/useRouter';
+import { useSEO } from '@/hooks/useSEO';
+import { WishCard } from '@/components/WishCard';
+import { AdSlot } from '@/components/AdSlot';
+import { ArrowLeft, ChevronDown } from 'lucide-react';
 
-export function CategoryPage({ router }: any) {
-  const [copied, setCopied] = useState<number | null>(null);
-  
-  // URL se slug nikalna - sabse safe tareeka
-  const path = typeof window !== 'undefined' ? window.location.pathname : '';
-  const slugFromUrl = path.split('/').pop() || path.split('/').filter(Boolean).pop();
-  const slug = router?.params?.slug || router?.params?.id || slugFromUrl;
-  
-  const category = categories.find((c: any) => c.slug === slug || c.slug.toLowerCase() === slug?.toLowerCase());
+type Props = {
+  router: RouterHook;
+  slug: string;
+};
 
-  if (!category) {
+const PAGE_SIZE = 15;
+
+export function CategoryPage({ router, slug }: Props) {
+  const { navigate } = router;
+  const cat = getCategoryBySlug(slug);
+  const [visibleCount, setVisibleCount] = useState(PAGE_SIZE);
+
+  useSEO({
+    title: cat ? `${cat.name} — Wishes Hub India` : 'Category — Wishes Hub India',
+    description: cat ? cat.description : 'Browse wishes and shayari on Wishes Hub India.',
+    keywords: cat ? `${cat.name}, ${cat.language}, wishes, shayari, hindi, english, whatsapp share` : 'wishes, shayari',
+    ogTitle: cat ? `${cat.name} — Wishes Hub India` : undefined,
+    ogDescription: cat?.description,
+  });
+
+  if (!cat) {
     return (
-      <div style={{padding:'40px 20px', textAlign:'center'}}>
-        <p>Category nahi mili: {slug}</p>
-        <button onClick={() => router.navigate('/')} style={{marginTop:'12px', background:'#ff8a00', color:'#fff', border:'none', padding:'10px 20px', borderRadius:'10px'}}>Home pe jao</button>
+      <div className="mx-auto max-w-5xl px-4 py-16 text-center">
+        <h1 className="text-2xl font-bold text-gray-900">Category not found</h1>
+        <button
+          onClick={() => navigate('/')}
+          className="mt-4 rounded-lg bg-amber-500 px-5 py-2.5 text-sm font-bold text-white"
+        >
+          Back to Home
+        </button>
       </div>
     );
   }
 
-  const handleCopy = (text: string, index: number) => {
-    navigator.clipboard.writeText(text);
-    setCopied(index);
-    setTimeout(() => setCopied(null), 2000);
-  };
-  const handleWhatsApp = (text: string) => {
-    window.open(`https://wa.me/?text=${encodeURIComponent(text + "\n\n- Wishes Hub India ✨")}`, '_blank');
-  };
+  const relatedCategories = categories.filter((c) => c.slug !== slug && c.group === cat.group).slice(0, 12);
+  const visibleWishes = cat.wishes.slice(0, visibleCount);
+  const hasMore = visibleCount < cat.wishes.length;
 
   return (
-    <div style={{background:'#fdf8f4', minHeight:'100vh', paddingBottom:'20px'}}>
-      <div style={{padding:'12px 16px'}}>
-        <button onClick={() => router.navigate('/')} style={{background:'#fff', border:'1px solid #eee', padding:'8px 14px', borderRadius:'20px', fontSize:'13px', fontWeight:'700'}}>← Back</button>
+    <div className="mx-auto max-w-3xl px-4 py-6">
+      <button
+        onClick={() => navigate(cat.group === 'festival' ? '/festival-wishes' : '/shayari')}
+        className="mb-4 flex items-center gap-1 text-sm font-medium text-gray-500 hover:text-gray-900"
+      >
+        <ArrowLeft className="h-4 w-4" />
+        Back
+      </button>
+
+      <div className={`relative overflow-hidden rounded-2xl bg-gradient-to-br ${cat.gradient} p-6 text-white shadow-lg`}>
+        <div className="relative">
+          <span className="text-4xl">{cat.emoji}</span>
+          <h1 className="mt-2 text-2xl font-bold">{cat.name}</h1>
+          <p className="mt-1 text-sm text-white/80">{cat.description}</p>
+          <span className="mt-3 inline-block rounded-full bg-white/20 px-3 py-1 text-xs font-semibold backdrop-blur">
+            {cat.wishes.length} wishes available
+          </span>
+        </div>
       </div>
-      <div style={{margin:'0 16px', padding:'22px', borderRadius:'24px', background:'linear-gradient(135deg, #ff9a00 0%, #ff6a00 100%)', color:'#fff'}}>
-        <div style={{fontSize:'36px'}}>{category.emoji}</div>
-        <h1 style={{fontSize:'26px', fontWeight:'800', margin:'6px 0 0'}}>{category.name}</h1>
-        <p style={{fontSize:'13px', opacity:.9, marginTop:'6px'}}>{category.description}</p>
-        <div style={{marginTop:'14px', background:'rgba(255,255,255,0.25)', display:'inline-block', padding:'6px 14px', borderRadius:'20px', fontSize:'12px', fontWeight:'700'}}>{category.wishes?.length || 20} wishes ✨</div>
+
+      <div className="mt-6">
+        <AdSlot />
       </div>
-      <div style={{padding:'16px', display:'grid', gap:'14px', marginTop:'10px'}}>
-        {category.wishes?.map((wish: string, i: number) => (
-          <div key={i} style={{background:'#fff', borderRadius:'20px', padding:'18px', boxShadow:'0 4px 20px #00000008'}}>
-            <div style={{display:'flex', gap:'8px', alignItems:'center', marginBottom:'10px'}}>
-              <div style={{width:'30px', height:'30px', borderRadius:'50%', background:'#ff8a00', color:'#fff', display:'flex', alignItems:'center', justifyContent:'center', fontSize:'12px', fontWeight:'800'}}>{i+1}</div>
-              <span style={{fontSize:'12px', color:'#aaa'}}>Wish #{i+1}</span>
-            </div>
-            <p style={{fontSize:'16px', lineHeight:'1.6', color:'#222', whiteSpace:'pre-wrap'}}>{wish}</p>
-            <div style={{display:'flex', gap:'10px', marginTop:'14px'}}>
-              <button onClick={() => handleCopy(wish, i)} style={{flex:1, padding:'12px', borderRadius:'14px', border:'1px solid #eee', background: copied===i ? '#dcfce7' : '#f8f8f8', fontWeight:'700'}}>{copied===i ? '✅ Copied!' : '📋 Copy'}</button>
-              <button onClick={() => handleWhatsApp(wish)} style={{flex:1, padding:'12px', borderRadius:'14px', border:'none', background:'#25D366', color:'#fff', fontWeight:'700'}}>WhatsApp</button>
-            </div>
+
+      <div className="mt-6 space-y-4">
+        {visibleWishes.map((wish, i) => (
+          <div key={wish.id}>
+            <WishCard text={wish.text} index={i} />
+            {i === 9 && (
+              <div className="mt-4">
+                <AdSlot label="Advertisement" />
+              </div>
+            )}
+            {i === 24 && (
+              <div className="mt-4">
+                <AdSlot label="Advertisement" />
+              </div>
+            )}
           </div>
         ))}
+      </div>
+
+      {hasMore && (
+        <div className="mt-6 text-center">
+          <button
+            onClick={() => setVisibleCount((c) => c + PAGE_SIZE)}
+            className="inline-flex items-center gap-2 rounded-xl bg-gray-900 px-6 py-3 text-sm font-bold text-white transition-transform hover:scale-105 active:scale-95"
+          >
+            Load More
+            <ChevronDown className="h-4 w-4" />
+          </button>
+        </div>
+      )}
+
+      <div className="mt-8">
+        <h2 className="mb-4 text-lg font-bold text-gray-900">More {cat.group === 'festival' ? 'Festival Wishes' : 'Shayari'}</h2>
+        <div className="flex flex-wrap gap-2">
+          {relatedCategories.map((c) => (
+            <button
+              key={c.slug}
+              onClick={() => {
+                setVisibleCount(PAGE_SIZE);
+                navigate(`/category/${c.slug}`);
+              }}
+              className="flex items-center gap-1.5 rounded-full bg-gray-50 px-4 py-2 text-sm font-medium text-gray-700 ring-1 ring-gray-100 transition-colors hover:bg-gray-100"
+            >
+              <span>{c.emoji}</span>
+              {c.name}
+            </button>
+          ))}
+        </div>
       </div>
     </div>
   );
