@@ -8,6 +8,8 @@ import { FestivalWishesPage } from '@/pages/FestivalWishesPage';
 import { ShayariPage } from '@/pages/ShayariPage';
 import { StylishNamesPage } from '@/pages/StylishNamesPage';
 import { FancyTextPage } from '@/pages/FancyTextPage';
+import { NicknameGeneratorPage } from '@/pages/NicknameGeneratorPage';
+import { InstaBioPage } from '@/pages/InstaBioPage';
 import { AboutPage } from '@/pages/AboutPage';
 import { ContactPage } from '@/pages/ContactPage';
 import { PrivacyPage } from '@/pages/PrivacyPage';
@@ -23,6 +25,8 @@ function App() {
     if (path === '/shayari') return <ShayariPage router={router} />;
     if (path === '/stylish-names') return <StylishNamesPage router={router} />;
     if (path === '/fancy-text') return <FancyTextPage router={router} />;
+    if (path === '/nickname-generator') return <NicknameGeneratorPage router={router} />;
+    if (path === '/insta-bio') return <InstaBioPage router={router} />;
     if (path === '/about') return <AboutPage router={router} />;
     if (path === '/contact') return <ContactPage router={router} />;
     if (path === '/privacy-policy') return <PrivacyPage router={router} />;
@@ -37,12 +41,7 @@ function App() {
       <div className="mx-auto max-w-5xl px-4 py-16 text-center">
         <h1 className="text-3xl font-bold text-gray-900">404</h1>
         <p className="mt-2 text-gray-500">Page not found</p>
-        <button
-          onClick={() => router.navigate('/')}
-          className="mt-4 rounded-xl bg-amber-500 px-5 py-2.5 text-sm font-bold text-white"
-        >
-          Go Home
-        </button>
+        <button onClick={() => router.navigate('/')} className="mt-4 rounded-xl bg-amber-500 px-5 py-2.5 text-sm font-bold text-white">Go Home</button>
       </div>
     );
   };
@@ -50,18 +49,11 @@ function App() {
   return (
     <div className="flex min-h-screen flex-col bg-gray-50">
       <Header router={router} />
-      <main className="flex-1">
-        {renderPage()}
-        {/* Bottom ad on content pages */}
-        {path === '/' && (
-          <div className="mx-auto max-w-5xl px-4 py-6">
-            <AdSlot />
-          </div>
-        )}
+      <main className="flex-1">{renderPage()}
+        {path === '/' && (<div className="mx-auto max-w-5xl px-4 py-6"><AdSlot /></div>)}
       </main>
       <Footer router={router} />
     </div>
   );
 }
-
 export default App;
