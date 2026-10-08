@@ -1,43 +1,42 @@
 export function HomePage({ router }: any) {
-  const tools = [
-    { title: 'Stylish Names', desc: '🔥 1M+ Used • Copy Paste', color: '#f97316', icon: '🔥', path: '/stylish-names' },
-    { title: 'FF Nickname Generator', desc: '⚔️ For Free Fire, BGMI', color: '#ef4444', icon: '⚔️', path: '/nickname-generator' },
-    { title: 'Instagram VIP Bio', desc: '👑 Attitude Bio for Boys', color: '#ec4899', icon: '👑', path: '/insta-bio' },
-    { title: 'Fancy Text Generator', desc: '✨ 30+ Cool Fonts', color: '#8b5cf6', icon: '✨', path: '/fancy-text' },
-    { title: 'Festival Wishes', desc: '🪔 Diwali, Holi, Eid', color: '#eab308', icon: '🪔', path: '/festival-wishes' },
-    { title: 'Love Shayari', desc: '❤️ 500+ Shayari', color: '#f43f5e', icon: '❤️', path: '/shayari' },
+  const premiumTools = [
+    { title: 'Stylish Name', subtitle: 'Generator', tag: 'NEW 🔥', color: 'linear-gradient(135deg,#a855f7,#ec4899)', icon: '𝕬', path: '/stylish-names' },
+    { title: 'Fancy Text', subtitle: 'Stylish Fonts', tag: 'POPULAR', color: 'linear-gradient(135deg,#06b6d4,#3b82f6)', icon: 'Ⓕ', path: '/fancy-text' },
+    { title: 'FF Nickname', subtitle: 'Free Fire • BGMI', tag: 'VIRAL 🔥', color: 'linear-gradient(135deg,#f97316,#ef4444)', icon: '⚔️', path: '/nickname-generator' },
+    { title: 'VIP Bio', subtitle: 'Insta Bio', tag: 'NEW 👑', color: 'linear-gradient(135deg,#ec4899,#8b5cf6)', icon: '👑', path: '/insta-bio' },
   ];
 
   return (
-    <div style={{ minHeight: '100vh', background: '#f8f9fb', fontFamily: 'system-ui', padding: '0' }}>
-      <div style={{ maxWidth: '1200px', margin: '0 auto', padding: '20px 16px' }}>
-        <div style={{ background: 'linear-gradient(135deg,#0f172a,#1e293b)', borderRadius: '28px', padding: '28px 20px', color: '#fff', textAlign: 'center', marginBottom: '20px' }}>
-          <h1 style={{ fontSize: '32px', fontWeight: '900', lineHeight: '1.1', margin: 0 }}>Wishes Hub India 🇮🇳</h1>
-          <p style={{ fontSize: '14px', opacity: 0.8, marginTop: '8px' }}>India's No.1 Stylish Name & Bio Generator - 2M+ Users Trust Us</p>
-          <div style={{ display: 'flex', gap: '8px', justifyContent: 'center', marginTop: '16px', flexWrap: 'wrap' }}>
-            <span style={{ background: '#ffffff1a', padding: '6px 12px', borderRadius: '20px', fontSize: '12px', fontWeight: '700' }}>⚡ 100% Free</span>
-            <span style={{ background: '#ffffff1a', padding: '6px 12px', borderRadius: '20px', fontSize: '12px', fontWeight: '700' }}>🔥 No Login</span>
-            <span style={{ background: '#ffffff1a', padding: '6px 12px', borderRadius: '20px', fontSize: '12px', fontWeight: '700' }}>✅ Copy Paste</span>
-          </div>
+    <div style={{ minHeight: '100vh', background: '#fff8f2', fontFamily: 'system-ui' }}>
+      <div style={{ maxWidth: '600px', margin: '0 auto', padding: '16px' }}>
+        <h1 style={{ fontSize: '28px', fontWeight: '900', textAlign: 'center', margin: '16px 0 4px' }}>Wishes Hub India 🇮🇳</h1>
+        <p style={{ textAlign: 'center', color: '#6b7280', fontSize: '14px', marginBottom: '16px' }}>Festivals, Shayari & Stylish Tools</p>
+        
+        <div style={{ background: '#fff', borderRadius: '16px', padding: '12px', marginBottom: '16px', boxShadow: '0 2px 10px rgba(0,0,0,0.05)' }}>
+          <input placeholder="Search wishes..." style={{ width: '100%', border: 'none', outline: 'none', fontSize: '14px' }} />
         </div>
 
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(160px, 1fr))', gap: '12px' }}>
-          {tools.map((t) => (
-            <div key={t.path} onClick={() => router.navigate(t.path)} style={{ background: '#fff', borderRadius: '20px', padding: '18px', cursor: 'pointer', border: '1px solid #f1f5f9', boxShadow: '0 4px 20px rgba(0,0,0,0.04)' }}>
-              <div style={{ width: '44px', height: '44px', borderRadius: '12px', background: `${t.color}15`, display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '22px' }}>{t.icon}</div>
-              <div style={{ fontSize: '15px', fontWeight: '800', marginTop: '12px', color: '#0f172a' }}>{t.title}</div>
-              <div style={{ fontSize: '12px', color: '#64748b', marginTop: '4px', fontWeight: '500' }}>{t.desc}</div>
-              <div style={{ marginTop: '12px', background: t.color, color: '#fff', padding: '8px', borderRadius: '10px', textAlign: 'center', fontSize: '12px', fontWeight: '800' }}>Generate Now →</div>
+        <div style={{ fontWeight: '800', fontSize: '14px', marginBottom: '12px' }}>✨ PREMIUM TOOLS</div>
+        
+        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '12px' }}>
+          {premiumTools.map((t) => (
+            <div key={t.path} onClick={() => router.navigate(t.path)} style={{ background: t.color, borderRadius: '20px', padding: '16px', color: '#fff', cursor: 'pointer' }}>
+              <div style={{ width: '44px', height: '44px', background: 'rgba(255,255,255,0.2)', borderRadius: '12px', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '20px', fontWeight: '900' }}>{t.icon}</div>
+              <div style={{ fontWeight: '800', marginTop: '20px', fontSize: '15px' }}>{t.title}</div>
+              <div style={{ fontSize: '12px', opacity: 0.9 }}>{t.subtitle}</div>
+              <div style={{ marginTop: '10px', background: 'rgba(255,255,255,0.25)', display: 'inline-block', padding: '4px 10px', borderRadius: '20px', fontSize: '11px', fontWeight: '700' }}>{t.tag}</div>
             </div>
           ))}
         </div>
 
-        <div style={{ marginTop: '20px', background: '#fff', borderRadius: '20px', padding: '16px', border: '1px solid #f1f5f9', display: 'flex', gap: '12px', alignItems: 'center' }}>
-          <div style={{ fontSize: '28px' }}>🚀</div>
-          <div>
-            <div style={{ fontWeight: '800', fontSize: '14px' }}>2,34,891+ Names Generated Today</div>
-            <div style={{ fontSize: '12px', color: '#64748b' }}>Join India's biggest stylish names community</div>
-          </div>
+        <div style={{ fontWeight: '800', fontSize: '14px', margin: '20px 0 12px' }}>🎉 ALL WISHES</div>
+        <div onClick={()=>router.navigate('/category/diwali-wishes')} style={{ background:'#fff', borderRadius:'16px', padding:'12px', display:'flex', gap:'12px', alignItems:'center', marginBottom:'10px', cursor:'pointer' }}>
+          <div style={{width:'48px', height:'48px', background:'#fff7ed', borderRadius:'12px', display:'flex', alignItems:'center', justifyContent:'center', fontSize:'22px'}}>🪔</div>
+          <div><div style={{fontWeight:'700', fontSize:'14px'}}>Diwali Wishes</div><div style={{fontSize:'12px', color:'#6b7280'}}>Light up the festival of lights...</div></div>
+        </div>
+        <div onClick={()=>router.navigate('/shayari')} style={{ background:'#fff', borderRadius:'16px', padding:'12px', display:'flex', gap:'12px', alignItems:'center', cursor:'pointer' }}>
+          <div style={{width:'48px', height:'48px', background:'#fff1f2', borderRadius:'12px', display:'flex', alignItems:'center', justifyContent:'center', fontSize:'22px'}}>❤️</div>
+          <div><div style={{fontWeight:'700', fontSize:'14px'}}>Love Shayari</div><div style={{fontSize:'12px', color:'#6b7280'}}>Express your deepest emotions...</div></div>
         </div>
       </div>
     </div>
