@@ -11,6 +11,8 @@ const premiumTools = [
 const categories = [
   { title: 'Diwali Wishes', desc: 'Light up the festival of lights...', icon: '🪔', path: '/diwali-wishes' },
   { title: 'Christmas Wishes', desc: 'Merry Christmas wishes...', icon: '🎄', path: '/christmas-wishes' },
+  { title: 'Birthday Wishes', desc: 'Make every birthday special...', icon: '🎂', path: '/birthday-wishes' },
+  { title: 'Love Shayari', desc: 'Express your deepest emotions...', icon: '❤️', path: '/love-shayari' },
 ];
 
 export default function HomePage() {
