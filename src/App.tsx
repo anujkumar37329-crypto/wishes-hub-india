@@ -7,6 +7,7 @@ import { CategoryPage } from '@/pages/CategoryPage';
 import { FestivalWishesPage } from '@/pages/FestivalWishesPage';
 import { ShayariPage } from '@/pages/ShayariPage';
 import { StylishNamesPage } from '@/pages/StylishNamesPage';
+import { FancyTextPage } from '@/pages/FancyTextPage';
 import { AboutPage } from '@/pages/AboutPage';
 import { ContactPage } from '@/pages/ContactPage';
 import { PrivacyPage } from '@/pages/PrivacyPage';
@@ -18,11 +19,10 @@ function App() {
 
   const renderPage = () => {
     if (path === '/') return <HomePage router={router} />;
-
     if (path === '/festival-wishes') return <FestivalWishesPage router={router} />;
     if (path === '/shayari') return <ShayariPage router={router} />;
     if (path === '/stylish-names') return <StylishNamesPage router={router} />;
-
+    if (path === '/fancy-text') return <FancyTextPage router={router} />;
     if (path === '/about') return <AboutPage router={router} />;
     if (path === '/contact') return <ContactPage router={router} />;
     if (path === '/privacy-policy') return <PrivacyPage router={router} />;
@@ -53,7 +53,7 @@ function App() {
       <main className="flex-1">
         {renderPage()}
         {/* Bottom ad on content pages */}
-        {path !== '/' && (
+        {path === '/' && (
           <div className="mx-auto max-w-5xl px-4 py-6">
             <AdSlot />
           </div>
