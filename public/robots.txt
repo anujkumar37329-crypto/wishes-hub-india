@@ -1,4 +1,3 @@
 User-agent: *
 Allow: /
-
-Sitemap: https://wishes-hub-india.bolt.new/sitemap.xml
+Sitemap: https://wishes-hub-india.vercel.app/sitemap.xml
