@@ -5,7 +5,6 @@ import { AdSlot } from '@/components/AdSlot';
 import { HomePage } from '@/pages/HomePage';
 import { CategoryPage } from '@/pages/CategoryPage';
 import { FestivalWishesPage } from '@/pages/FestivalWishesPage';
-import { DiwaliWishesAiCardPage } from '@/pages/DiwaliWishesAiCardPage';
 import { ShayariPage } from '@/pages/ShayariPage';
 import { StylishNamesPage } from '@/pages/StylishNamesPage';
 import { FancyTextPage } from '@/pages/FancyTextPage';
@@ -23,8 +22,6 @@ function App() {
   const renderPage = () => {
     if (path === '/') return <HomePage router={router} />;
     if (path === '/festival-wishes') return <FestivalWishesPage router={router} />;
-    if (path === '/diwali-wishes-ai-card') return <DiwaliWishesAiCardPage />;
-    if (path === '/shayari') return <ShayariPage router={router} />;
     if (path === '/stylish-names') return <StylishNamesPage router={router} />;
     if (path === '/fancy-text') return <FancyTextPage router={router} />;
     if (path === '/nickname-generator') return <NicknameGeneratorPage router={router} />;
