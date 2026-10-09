@@ -14,6 +14,7 @@ import { AboutPage } from '@/pages/AboutPage';
 import { ContactPage } from '@/pages/ContactPage';
 import { PrivacyPage } from '@/pages/PrivacyPage';
 import { DisclaimerPage } from '@/pages/DisclaimerPage';
+import { DiwaliWishesAiCardPage } from '@/pages/DiwaliWishesAiCardPage';
 
 function App() {
   const router = useRouter();
@@ -30,6 +31,7 @@ function App() {
     if (path === '/contact') return <ContactPage router={router} />;
     if (path === '/privacy-policy') return <PrivacyPage router={router} />;
     if (path === '/disclaimer') return <DisclaimerPage router={router} />;
+    if (path === '/diwali-wishes-ai-card') return <DiwaliWishesAiCardPage />;
 
     if (path.startsWith('/category/')) {
       const slug = path.replace('/category/', '');
@@ -40,7 +42,7 @@ function App() {
       <div className="mx-auto max-w-5xl px-4 py-16 text-center">
         <h1 className="text-3xl font-bold text-gray-900">404</h1>
         <p className="mt-2 text-gray-500">Page not found</p>
-        <button onClick={() => router.navigate('/')} className="mt-4 rounded-xl bg-amber-500 px-5 py-2.5 text-sm font-bold text-white">Go Home</button>
+        <button onClick={() => router.navigate('/')} className="mt-4 rounded-xl bg-amber-500 px-5 py-2.5 text-sm font-bold">Go Home</button>
       </div>
     );
   };
@@ -49,7 +51,7 @@ function App() {
     <div className="flex min-h-screen flex-col bg-gray-50">
       <Header router={router} />
       <main className="flex-1">{renderPage()}
-        {path === '/' && (<div className="mx-auto max-w-5xl px-4 py-6"><AdSlot /></div>)}
+      {(path === '/' && <div className="mx-auto max-w-5xl px-4 py-6"><AdSlot /></div>)}
       </main>
       <Footer router={router} />
     </div>
