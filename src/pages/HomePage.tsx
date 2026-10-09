@@ -1,6 +1,7 @@
 import { Link, useNavigate } from "react-router-dom";
+
 const premiumTools = [
-  { title: 'Diwali Card', subtitle: 'AI Photo Card', tag: 'NEW 🪔', color: 'linear-gradient(135deg,#ff9a00,#ff2d00)', icon: '🪔', path: '/diwali-card-generator.html' },
+  { title: 'Diwali Card', subtitle: 'AI Photo Card', tag: 'NEW 🪔', color: 'linear-gradient(135deg,#ff9a00,#ff2d00)', icon: '🪔', path: '/diwali-card-generator.html', isExternal: true },
   { title: 'Stylish Name', subtitle: 'Generator', tag: 'NEW 🔥', color: 'linear-gradient(135deg,#8b5cf6,#ec4899)', icon: '✨', path: '/stylish-names' },
   { title: 'Fancy Text', subtitle: 'Stylish Fonts', tag: 'POPULAR', color: 'linear-gradient(135deg,#06b6d4,#3b82f6)', icon: '🔤', path: '/fancy-text' },
   { title: 'FF Nickname', subtitle: 'Free Fire • BGMI', tag: 'VIRAL 🔥', color: 'linear-gradient(135deg,#f59e0b,#ef4444)', icon: '🎮', path: '/ff-nickname' },
@@ -32,23 +33,16 @@ export default function HomePage() {
       </div>
 
       <div style={{display:'grid', gridTemplateColumns:'1fr 1fr', gap:'12px'}}>
-        <div onClick={() => window.location.href='/diwali-card-generator.html'} style={{background:'linear-gradient(135deg,#ff9a00,#ff2d00)', padding:'14px', borderRadius:'16px', color:'white', cursor:'pointer'}}>
-          <div style={{width:'48px', height:'48px', background:'rgba(255,255,255,0.2)', borderRadius:'12px', display:'flex', alignItems:'center', justifyContent:'center', fontSize:'22px'}}>🪔</div>
-          <div style={{marginTop:'10px'}}>
-            <div style={{fontWeight:'800', fontSize:'14px'}}>Diwali Card</div>
-            <div style={{fontSize:'11px', opacity:0.9, marginTop:'2px'}}>AI Photo Card</div>
+        {premiumTools.map((t, i) => (
+          <div key={i} onClick={() => t.isExternal? window.location.href = t.path : navigate(t.path)} style={{background: t.color, padding:'14px', borderRadius:'16px', color:'white', cursor:'pointer'}}>
+            <div style={{width:'48px', height:'48px', background:'rgba(255,255,255,0.2)', borderRadius:'12px', display:'flex', alignItems:'center', justifyContent:'center', fontSize:'22px'}}>{t.icon}</div>
+            <div style={{marginTop:'10px'}}>
+              <div style={{fontWeight:'800', fontSize:'14px'}}>{t.title}</div>
+              <div style={{fontSize:'11px', opacity:0.9, marginTop:'2px'}}>{t.subtitle}</div>
+            </div>
+            <div style={{marginTop:'8px', fontSize:'10px', background:'rgba(0,0,0,0.2)', display:'inline-block', padding:'3px 8px', borderRadius:'20px', fontWeight:'700'}}>{t.tag}</div>
           </div>
-          <div style={{marginTop:'8px', fontSize:'10px', background:'rgba(0,0,0,0.2)', display:'inline-block', padding:'3px 8px', borderRadius:'20px', fontWeight:'700'}}>NEW 🪔</div>
-        </div>
-
-        <div onClick={() => navigate('/stylish-names')} style={{background:'linear-gradient(135deg,#8b5cf6,#ec4899)', padding:'14px', borderRadius:'16px', color:'white', cursor:'pointer'}}>
-          <div style={{width:'48px', height:'48px', background:'rgba(255,255,255,0.2)', borderRadius:'12px', display:'flex', alignItems:'center', justifyContent:'center', fontSize:'22px'}}>✨</div>
-          <div style={{marginTop:'10px'}}>
-            <div style={{fontWeight:'800', fontSize:'14px'}}>Stylish Name</div>
-            <div style={{fontSize:'11px', opacity:0.9, marginTop:'2px'}}>Generator</div>
-          </div>
-          <div style={{marginTop:'8px', fontSize:'10px', background:'rgba(255,255,255,0.2)', display:'inline-block', padding:'3px 8px', borderRadius:'20px', fontWeight:'700'}}>POPULAR</div>
-        </div>
+        ))}
       </div>
 
       <div className="mt-6">
