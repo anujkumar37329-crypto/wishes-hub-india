@@ -14,10 +14,20 @@ export function HomePage({ router }: any) {
     { name:'VIP Bio', sub:'Insta Bio', icon:'👑', grad:'linear-gradient(135deg,#a855f7,#6366f1)', badge:'NEW 👑', link:'/vip-bio' },
   ];
 
+  const catStyle: any = {
+    'diwali-wishes': { icon:'🪔', bg:'#fff3e0', color:'#ff8c00', desc:'Festival of Lights' },
+    'birthday-wishes': { icon:'🎂', bg:'#fce7f3', color:'#ec4899', desc:'Make their day special' },
+    'love-shayari': { icon:'❤️', bg:'#fee2e2', color:'#ef4444', desc:'Dil se dil tak' },
+    'friendship-shayari': { icon:'🤝', bg:'#e0e7ff', color:'#6366f1', desc:'Yaari dosti ke liye' },
+    'holi-wishes': { icon:'🎨', bg:'#f0fdf4', color:'#22c55e', desc:'Rangon ka tyohar' },
+    'eid-wishes': { icon:'🌙', bg:'#ecfdf5', color:'#10b981', desc:'Eid Mubarak' },
+    'new-year-wishes': { icon:'🎊', bg:'#eff6ff', color:'#3b82f6', desc:'Naya saal wishes' },
+    'christmas-wishes': { icon:'🎄', bg:'#fef2f2', color:'#dc2626', desc:'Merry Christmas' },
+  };
+
   return (
     <div style={{minHeight:'100vh', background:'#fdf8f3', fontFamily:'system-ui'}}>
-      <div style={{padding:'14px 18px 18px'}}>
-        {/* Search Only - header already exists in layout */}
+      <div style={{padding:'14px 18px 20px'}}>
         <div style={{position:'relative'}}>
           <span style={{position:'absolute', left:'14px', top:'50%', transform:'translateY(-50%)'}}>🔍</span>
           <input value={search} onChange={e=>setSearch(e.target.value)} placeholder="Search wishes, shayari, tools..." style={{width:'100%', padding:'14px 14px 14px 40px', borderRadius:'16px', border:'1px solid #f0d9b5', outline:'none', fontSize:'14px', background:'white', boxShadow:'0 4px 12px rgba(255,140,0,0.08)'}} />
@@ -39,17 +49,25 @@ export function HomePage({ router }: any) {
         </div>
 
         <h3 style={{fontSize:'15px', fontWeight:900, color:'#111', margin:'26px 0 12px'}}>🎉 ALL WISHES</h3>
-        <div style={{display:'grid', gap:'10px'}}>
-          {filtered.map((cat:any)=>(
-            <div key={cat.slug} onClick={()=>navigate(`/category/${cat.slug}`)} style={{display:'flex', alignItems:'center', gap:'14px', background:'white', padding:'12px', borderRadius:'18px', boxShadow:'0 2px 8px rgba(0,0,0,0.04)', border:'1px solid #fef3e2', cursor:'pointer'}}>
-              <div style={{width:'52px', height:'52px', background:'#fff7ed', borderRadius:'14px', display:'flex', alignItems:'center', justifyContent:'center', fontSize:'24px'}}>{cat.icon || '🎉'}</div>
-              <div style={{flex:1}}>
-                <div style={{fontWeight:800, fontSize:'14px', color:'#1f2937'}}>{cat.name}</div>
-                <div style={{fontSize:'12px', color:'#9ca3af'}}>{cat.desc?.slice(0,40) || 'Best wishes'}</div>
+        <div style={{display:'grid', gap:'12px'}}>
+          {filtered.map((cat:any)=>{
+            const s = catStyle[cat.slug] || { icon:'🎉', bg:'#fff7ed', color:'#f59e0b', desc: cat.desc || 'Best wishes for you' };
+            return (
+              <div key={cat.slug} onClick={()=>navigate(`/category/${cat.slug}`)} style={{display:'flex', alignItems:'center', gap:'14px', background:'white', padding:'14px', borderRadius:'20px', boxShadow:'0 2px 10px rgba(0,0,0,0.05)', border:'1px solid #fef3e2', cursor:'pointer'}}>
+                <div style={{width:'56px', height:'56px', background:s.bg, borderRadius:'16px', display:'flex', alignItems:'center', justifyContent:'center', fontSize:'26px'}}>{s.icon}</div>
+                <div style={{flex:1}}>
+                  <div style={{fontWeight:800, fontSize:'15px', color:'#1f2937'}}>{cat.name}</div>
+                  <div style={{fontSize:'12.5px', color:'#6b7280', marginTop:'2px'}}>{s.desc}</div>
+                  <div style={{fontSize:'11px', color:s.color, fontWeight:700, marginTop:'4px'}}>{cat.wishes?.length || 20}+ Wishes • Copy & Share</div>
+                </div>
+                <div style={{width:'36px', height:'36px', borderRadius:'50%', background:'#fdf2e9', display:'flex', alignItems:'center', justifyContent:'center', color:'#f59e0b', fontWeight:900, fontSize:'18px'}}>›</div>
               </div>
-              <div style={{width:'30px', height:'30px', borderRadius:'50%', background:'#fdf2e9', display:'flex', alignItems:'center', justifyContent:'center', color:'#f59e0b', fontWeight:900}}>›</div>
-            </div>
-          ))}
+            );
+          })}
+        </div>
+
+        <div style={{textAlign:'center', marginTop:'26px', padding:'14px', background:'white', borderRadius:'16px', border:'1px dashed #f3e8d3'}}>
+          <div style={{fontSize:'12px', color:'#b45309', fontWeight:800}}>Made with ❤️ in India • Wishes Hub</div>
         </div>
       </div>
     </div>
