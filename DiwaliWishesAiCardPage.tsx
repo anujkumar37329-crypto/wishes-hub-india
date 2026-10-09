@@ -1,6 +1,6 @@
 import { useState } from 'react';
 
-export function DiwaliWishesAiCardPage() {
+export function DiwaliWishesAiCardPage(){
   const [name, setName] = useState('Raju');
   const [photo, setPhoto] = useState<string | null>(null);
 
@@ -23,11 +23,11 @@ export function DiwaliWishesAiCardPage() {
 
           <div className="bg-gradient-to-br from-orange-500 via-red-500 to-pink-600 rounded-2xl p-1">
             <div className="bg-gradient-to-br from-yellow-50 to-orange-100 rounded-xl p-6 text-center">
-              {photo && <img src={photo} className="w-28 h-28 rounded-full mx-auto object-cover border-4 border-orange-400 shadow-lg" />}
+              {photo && <img src={photo} className="w-28 h-28 rounded-full mx-auto object-cover border-4 border-orange-400" />}
               <h2 className="text-2xl font-extrabold mt-4 text-orange-700">Happy Diwali, {name}!</h2>
               <p className="mt-2 font-semibold text-gray-700">My Heartfelt Diwali Wishes</p>
-              <p className="mt-3 text-sm text-gray-600">Is Diwali apke jeevan me khushiyan, samridhi aur roshni aaye. 🪔✨</p>
-              <div className="mt-4 text-3xl">🪔🎆🎇🪔</div>
+              <p className="mt-3 text-sm text-gray-600">Is Diwali apke jeevan me khushiyan, samridhi aur roshni aaye. ✨</p>
+              <div className="mt-4 text-3xl">🪔🎆🧨</div>
             </div>
           </div>
 
