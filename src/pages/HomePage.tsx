@@ -1,5 +1,4 @@
 import { Link, useNavigate } from "react-router-dom";
-
 const premiumTools = [
   { title: 'Diwali Card', subtitle: 'AI Photo Card', tag: 'NEW 🪔', color: 'linear-gradient(135deg,#ff9a00,#ff2d00)', icon: '🪔', path: '/diwali-card-generator.html' },
   { title: 'Stylish Name', subtitle: 'Generator', tag: 'NEW 🔥', color: 'linear-gradient(135deg,#8b5cf6,#ec4899)', icon: '✨', path: '/stylish-names' },
