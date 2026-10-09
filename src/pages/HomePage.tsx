@@ -9,7 +9,7 @@ export function HomePage({ router }: any) {
   
     
 const tools = [
- { name:'Diwali Card', sub:'AI Photo Card', icon:'🪔', grad:'linear-gradient(135deg,#fa0c00,#f3ad00)', badge:'NEW ✨', link:'/diwali-wishes-ai-card', external:false },
+ { name:'Diwali Card', sub:'AI Photo Card', icon:'🪔', grad:'linear-gradient(135deg,#fa0c00,#f3ad00)', badge:'NEW ✨', link:'/festival-wishes', external:false },
  { name:'Stylish Names', sub:'Generator', icon:'✨', grad:'linear-gradient(135deg,#8b5cf6,#ec4899)', badge:'NEW 🔥', link:'/stylish-names', external:false },
  { name:'Fancy Text', sub:'Stylish Fonts', icon:'🔠', grad:'linear-gradient(135deg,#06b6d4,#3b82f6)', badge:'POPULAR', link:'/fancy-text', external:false },
  { name:'FF Nickname', sub:'Free Fire • BGMI', icon:'⚔️', grad:'linear-gradient(135deg,#f59e0b,#ef4444)', badge:'VIRAL 🔥', link:'/stylish-names', external:false },
