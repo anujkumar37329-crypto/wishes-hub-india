@@ -24,12 +24,12 @@ export function HomePage({ router }: any) {
         />
       </div>
 
-      {/* 🔥 TOOLS SECTION - Stylish Name Mapas */}
+      {/* 🔥 PREMIUM TOOLS */}
       <div style={{marginBottom:'20px'}}>
         <h3 style={{fontSize:'14px', fontWeight:'800', color:'#111', marginBottom:'10px', letterSpacing:'0.5px'}}>✨ PREMIUM TOOLS</h3>
         <div style={{display:'grid', gridTemplateColumns:'1fr 1fr', gap:'12px'}}>
 
-          {/* Diwali Card - NEW */}
+          {/* Diwali Card */}
           <div onClick={() => window.location.href='/diwali-card-generator.html'} style={{background:'linear-gradient(135deg,#ff8c00,#ff2d00)', padding:'14px', borderRadius:'18px', color:'white', cursor:'pointer'}}>
             <div style={{width:'48px', height:'48px', background:'rgba(255,255,255,0.2)', borderRadius:'12px', display:'flex', alignItems:'center', justifyContent:'center', fontSize:'22px'}}>🪔</div>
             <div style={{marginTop:'10px'}}>
@@ -39,7 +39,7 @@ export function HomePage({ router }: any) {
             <div style={{marginTop:'8px', fontSize:'10px', background:'rgba(255,255,255,0.2)', display:'inline-block', padding:'4px 8px', borderRadius:'20px', fontWeight:'700'}}>NEW 🪔</div>
           </div>
 
-          {/* Stylish Name Card */}
+          {/* Stylish Names */}
           <div onClick={() => navigate('/stylish-names')} style={{background:'linear-gradient(135deg,#8b5cf6,#ec4899)', padding:'14px', borderRadius:'18px', color:'white', cursor:'pointer'}}>
             <div style={{width:'48px', height:'48px', background:'rgba(255,255,255,0.2)', borderRadius:'12px', display:'flex', alignItems:'center', justifyContent:'center', fontSize:'22px'}}>✨</div>
             <div style={{marginTop:'10px'}}>
@@ -49,7 +49,7 @@ export function HomePage({ router }: any) {
             <div style={{marginTop:'8px', fontSize:'10px', background:'rgba(255,255,255,0.2)', display:'inline-block', padding:'4px 8px', borderRadius:'20px', fontWeight:'700'}}>NEW 🔥</div>
           </div>
 
-          {/* Font Style Card */}
+          {/* Fancy Text */}
           <div onClick={() => navigate('/fancy-text')} style={{background:'linear-gradient(135deg,#06b6d4,#3b82f6)', padding:'14px', borderRadius:'18px', color:'white', cursor:'pointer'}}>
             <div style={{width:'48px', height:'48px', background:'rgba(255,255,255,0.2)', borderRadius:'12px', display:'flex', alignItems:'center', justifyContent:'center', fontSize:'22px'}}>🔤</div>
             <div style={{marginTop:'10px'}}>
@@ -57,6 +57,26 @@ export function HomePage({ router }: any) {
               <div style={{fontSize:'11px', opacity:0.9, marginTop:'2px'}}>Stylish Fonts</div>
             </div>
             <div style={{marginTop:'8px', fontSize:'10px', background:'rgba(255,255,255,0.2)', display:'inline-block', padding:'4px 8px', borderRadius:'20px', fontWeight:'700'}}>POPULAR</div>
+          </div>
+
+          {/* FF Nickname */}
+          <div onClick={() => navigate('/ff-nickname')} style={{background:'linear-gradient(135deg,#f59e0b,#ef4444)', padding:'14px', borderRadius:'18px', color:'white', cursor:'pointer'}}>
+            <div style={{width:'48px', height:'48px', background:'rgba(255,255,255,0.2)', borderRadius:'12px', display:'flex', alignItems:'center', justifyContent:'center', fontSize:'22px'}}>⚔️</div>
+            <div style={{marginTop:'10px'}}>
+              <div style={{fontWeight:'800', fontSize:'14px'}}>FF Nickname</div>
+              <div style={{fontSize:'11px', opacity:0.9, marginTop:'2px'}}>Free Fire • BGMI</div>
+            </div>
+            <div style={{marginTop:'8px', fontSize:'10px', background:'rgba(255,255,255,0.2)', display:'inline-block', padding:'4px 8px', borderRadius:'20px', fontWeight:'700'}}>VIRAL 🔥</div>
+          </div>
+
+          {/* VIP Bio */}
+          <div onClick={() => navigate('/vip-bio')} style={{background:'linear-gradient(135deg,#a855f7,#6366f1)', padding:'14px', borderRadius:'18px', color:'white', cursor:'pointer'}}>
+            <div style={{width:'48px', height:'48px', background:'rgba(255,255,255,0.2)', borderRadius:'12px', display:'flex', alignItems:'center', justifyContent:'center', fontSize:'22px'}}>👑</div>
+            <div style={{marginTop:'10px'}}>
+              <div style={{fontWeight:'800', fontSize:'14px'}}>VIP Bio</div>
+              <div style={{fontSize:'11px', opacity:0.9, marginTop:'2px'}}>Insta Bio</div>
+            </div>
+            <div style={{marginTop:'8px', fontSize:'10px', background:'rgba(255,255,255,0.2)', display:'inline-block', padding:'4px 8px', borderRadius:'20px', fontWeight:'700'}}>NEW 👑</div>
           </div>
 
         </div>
